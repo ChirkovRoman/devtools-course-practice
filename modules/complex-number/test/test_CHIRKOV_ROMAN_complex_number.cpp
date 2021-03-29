@@ -2,9 +2,11 @@
 
 #include <gtest/gtest.h>
 
+#include <limits>
+
 #include "include/complex_number.h"
 
-TEST(Chirkov_Roman_ComplexNumberTest, division_by_zero) {
+TEST(Chirkov_Roman_ComplexNumberTest, division_by_approximately_zero) {
   ComplexNumber z1(123.45011, 321);
   double eps = std::numeric_limits<double>::epsilon();
   double lessThanEpsilon = eps / 2;
