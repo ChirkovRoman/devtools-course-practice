@@ -5,8 +5,10 @@
 #include "include/complex_number.h"
 
 TEST(Chirkov_Roman_ComplexNumberTest, division_by_zero) {
-  ComplexNumber z1(123, 321);
-  ComplexNumber z2(0.0, 0.0);
+  ComplexNumber z1(123.45011, 321);
+  double eps = std::numeric_limits<double>::epsilon();
+  double lessThanEpsilon = eps / 2;
+  ComplexNumber z2(0.0, lessThanEpsilon);
 
   ASSERT_ANY_THROW(z1 / z2);
 }
@@ -18,10 +20,13 @@ TEST(Chirkov_Roman_ComplexNumberTest, subtraction_then_addition) {
   ComplexNumber subtExp(-15, 19.0034);
   ComplexNumber subtRes = z1 - z2;
 
-  ASSERT_EQ(subtExp, subtRes);
+  ASSERT_EQ(subtExp.getRe(), subtRes.getRe());
+  ASSERT_EQ(subtExp.getIm(), subtRes.getIm());
 
   ComplexNumber addRes = subtRes + z2;
-  ASSERT_EQ(addRes, z1);
+
+  ASSERT_EQ(z1.getRe(), addRes.getRe());
+  ASSERT_EQ(z1.getIm(), addRes.getIm());
 }
 
 TEST(Chirkov_Roman_ComplexNumberTest, multiplication_then_division) {
@@ -34,5 +39,6 @@ TEST(Chirkov_Roman_ComplexNumberTest, multiplication_then_division) {
   ASSERT_EQ(multExp, multRes);
 
   ComplexNumber divRes = multRes / z2;
-  ASSERT_EQ(divRes, z1);
+  ASSERT_EQ(z1.getRe(), divRes.getRe());
+  ASSERT_EQ(z1.getIm(), divRes.getIm());
 }
