@@ -22,13 +22,11 @@ TEST(Chirkov_Roman_ComplexNumberTest, subtraction_then_addition) {
   ComplexNumber subtExp(-15, 19.0034);
   ComplexNumber subtRes = z1 - z2;
 
-  ASSERT_EQ(subtExp.getRe(), subtRes.getRe());
-  ASSERT_EQ(subtExp.getIm(), subtRes.getIm());
+  ASSERT_TRUE(subtExp == subtRes);
 
   ComplexNumber addRes = subtRes + z2;
 
-  ASSERT_EQ(z1.getRe(), addRes.getRe());
-  ASSERT_EQ(z1.getIm(), addRes.getIm());
+  ASSERT_TRUE(z1 == addRes);
 }
 
 TEST(Chirkov_Roman_ComplexNumberTest, multiplication_then_division) {
@@ -38,9 +36,8 @@ TEST(Chirkov_Roman_ComplexNumberTest, multiplication_then_division) {
   ComplexNumber multExp(-13357.9456, -11344.6);
   ComplexNumber multRes = z1 * z2;
 
-  ASSERT_EQ(multExp, multRes);
+  ASSERT_TRUE(multExp == multRes);
 
   ComplexNumber divRes = multRes / z2;
-  ASSERT_EQ(z1.getRe(), divRes.getRe());
-  ASSERT_EQ(z1.getIm(), divRes.getIm());
+  ASSERT_TRUE(z1 == divRes);
 }
