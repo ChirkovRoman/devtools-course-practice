@@ -4,11 +4,24 @@
 
 #include "include/complex_number.h"
 
-TEST(Chirkov_Roman_ComplexNumberTest, divide_by_zero) {
+TEST(Chirkov_Roman_ComplexNumberTest, division_by_zero) {
   ComplexNumber z1(123, 321);
   ComplexNumber z2(0.0, 0.0);
 
   ASSERT_ANY_THROW(z1 / z2);
+}
+
+TEST(Chirkov_Roman_ComplexNumberTest, subtraction_then_addition) {
+  ComplexNumber z1(1, 15.0034);
+  ComplexNumber z2(16, -4);
+
+  ComplexNumber subtExp(-15, 19.0034);
+  ComplexNumber subtRes = z1 - z2;
+
+  ASSERT_EQ(subtExp, subtRes);
+
+  ComplexNumber addRes = subtRes + z2;
+  ASSERT_EQ(addRes, z1);
 }
 
 TEST(Chirkov_Roman_ComplexNumberTest, multiplication_then_division) {
