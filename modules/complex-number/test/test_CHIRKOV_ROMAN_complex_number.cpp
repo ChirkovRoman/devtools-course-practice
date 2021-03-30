@@ -15,13 +15,18 @@ TEST(Chirkov_Roman_ComplexNumberTest, division_by_approximately_zero) {
   ASSERT_ANY_THROW(z1 / z2);
 }
 
-TEST(Chirkov_Roman_ComplexNumberTest, check_compare) {
+TEST(Chirkov_Roman_ComplexNumberTest, subtraction_then_addition) {
   ComplexNumber z1(1, 15.0034);
-  ComplexNumber z2(1, 15.0034);
+  ComplexNumber z2(16, -4);
 
-  EXPECT_TRUE(z1 == z2);
-  ASSERT_EQ(z1.getRe(), z2.getRe());
-  ASSERT_EQ(z1.getIm(), z2.getIm());
+  ComplexNumber subtExp(-15, 19.0034);
+  ComplexNumber subtRes = z1 - z2;
+
+  ASSERT_EQ(subtExp, subtRes);
+
+  ComplexNumber addRes = subtRes + z2;
+
+  ASSERT_EQ(z1, addRes);
 }
 
 TEST(Chirkov_Roman_ComplexNumberTest, multiplication_then_division) {
@@ -31,8 +36,8 @@ TEST(Chirkov_Roman_ComplexNumberTest, multiplication_then_division) {
   ComplexNumber multExp(-13357.9456, -11344.6);
   ComplexNumber multRes = z1 * z2;
 
-  ASSERT_TRUE(multExp == multRes);
+  ASSERT_EQ(multExp, multRes);
 
   ComplexNumber divRes = multRes / z2;
-  ASSERT_TRUE(z1 == divRes);
+  ASSERT_EQ(z1, divRes);
 }
