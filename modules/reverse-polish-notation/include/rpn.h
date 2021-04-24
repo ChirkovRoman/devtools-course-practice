@@ -1,4 +1,7 @@
 // Copyright 2021 Chirkov Roman
+#ifndf MODULES_REVERSE_POLISH_NOTATION_INCLUDE_RPN_H_
+#define MODULES_REVERSE_POLISH_NOTATION_INCLUDE_RPN_H_
+
 #include <stack>
 #include <string>
 
@@ -7,10 +10,12 @@ class RPN {
   std::string rpn;
   std::stack<char> op_stack;
   RPN();
-  RPN(std::string s);
+  explicit RPN(std::string s);
   static bool isDigit(char c);
   static bool isVar(char c);
   static bool isOperator(char c);
   static int priority(char c);
   void putSpaceIfNeeded();
 };
+
+#endif
