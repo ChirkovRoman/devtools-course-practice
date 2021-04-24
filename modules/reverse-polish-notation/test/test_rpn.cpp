@@ -63,7 +63,7 @@ TEST(RPN, priority_of_operations_is_considered) {
   ASSERT_EQ(exp, res);
 }
 
-TEST(RPN, brackets_are_considered) {
+TEST(RPN, parentheses_are_considered) {
   std::string exp = "7 11 + 15 13 / /";
   RPN notation("(7+11)/(15/(13))");
   std::string res = notation.rpn;
