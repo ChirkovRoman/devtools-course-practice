@@ -1,4 +1,5 @@
 // Copyright 2021 Chirkov Roman
+
 #ifndf MODULES_REVERSE_POLISH_NOTATION_INCLUDE_RPN_H_
 #define MODULES_REVERSE_POLISH_NOTATION_INCLUDE_RPN_H_
 
@@ -18,4 +19,4 @@ class RPN {
   void putSpaceIfNeeded();
 };
 
-#endif
+#endif  // MODULES_REVERSE_POLISH_NOTATION_INCLUDE_RPN_H_
