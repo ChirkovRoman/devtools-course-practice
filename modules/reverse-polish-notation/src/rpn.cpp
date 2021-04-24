@@ -16,7 +16,7 @@ RPN::RPN(std::string s) {
     throw "wrong source string: the first simbol is operator";
   }
 
-  for (auto i = 0; i < s.size(); i++) {
+  for (size_t i = 0; i < s.size(); i++) {
     if (isVar(s[i]) || isDigit(s[i])) {
       rpn += s[i];
       continue;
@@ -85,8 +85,12 @@ int RPN::priority(char c) {
       return 3;
     case '^':
       return 4;
+    default:
+      throw "wrong operator is trying to determine priority";
   }
+  return 4;
 }
+
 void RPN::putSpaceIfNeeded() {
   if (rpn[rpn.size() - 1] != ' ') {
     rpn += " ";
