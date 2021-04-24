@@ -12,4 +12,5 @@ class RPN {
   static bool isVar(char c);
   static bool isOperator(char c);
   static int priority(char c);
+  void putSpaceIfNeeded();
 };

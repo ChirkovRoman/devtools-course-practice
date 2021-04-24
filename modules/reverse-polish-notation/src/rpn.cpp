@@ -22,35 +22,43 @@ RPN::RPN(std::string s) {
       rpn += s[i];
       continue;
     }
+
     if (isOperator(s[i])) {
-      rpn += " ";
+      putSpaceIfNeeded();
+
       while (!op_stack.empty()) {
         if (priority(s[i]) <= priority(op_stack.top())) {
-          rpn += " ";
+          putSpaceIfNeeded();
           rpn += op_stack.top();
           op_stack.pop();
         } else {
           break;
         }
       }
+
+      putSpaceIfNeeded();
       op_stack.push(s[i]);
       continue;
     }
+
     if (s[i] == '(') {
       op_stack.push(s[i]);
       continue;
     }
+
     if (s[i] == ')') {
       while (op_stack.top() != '(') {
-        rpn += " ";
+        putSpaceIfNeeded();
         rpn += op_stack.top();
         op_stack.pop();
       }
+      putSpaceIfNeeded();
       op_stack.pop();
     }
   }
+
   while (!op_stack.empty()) {
-    rpn += " ";
+    putSpaceIfNeeded();
     rpn += op_stack.top();
     op_stack.pop();
   }
@@ -78,5 +86,10 @@ int RPN::priority(char c) {
       return 3;
     case '^':
       return 4;
+  }
+}
+void RPN::putSpaceIfNeeded() {
+  if (rpn[rpn.size() - 1] != ' ') {
+    rpn += " ";
   }
 }
