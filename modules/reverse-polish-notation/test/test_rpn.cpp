@@ -3,6 +3,9 @@
 #include <gtest/gtest.h>
 #include <include/rpn.h>
 
+#include <string>
+
+
 TEST(RPN, can_create_notation_without_parameters) {
   ASSERT_NO_THROW(RPN notation());
 }

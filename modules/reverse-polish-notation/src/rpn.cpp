@@ -2,7 +2,6 @@
 
 #include "include/rpn.h"
 
-#include <iterator>
 #include <stack>
 #include <string>
 
