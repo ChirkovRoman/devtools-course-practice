@@ -36,32 +36,6 @@ Application::Application() {
   rightOperand = Complex();
 }
 
-void Application::setLeftOperand(double re, double im) {
-  leftOperand = Complex(re, im);
-}
-
-Complex Application::getLeftOperand() { return leftOperand; }
-
-void Application::setRightOperand(double re, double im) {
-  rightOperand = Complex(re, im);
-}
-
-Complex Application::getRightOperand() { return rightOperand; }
-
-char Application::getOperation() {
-  if (!isOperation(operation)) throw "Operation is not set yet";
-  return operation;
-}
-
-void Application::setOperation(char op) {
-  if (!isOperation(op)) throw "Unsupported operation";
-  operation = op;
-}
-
-bool Application::isOperation(char op) {
-  return (op == '+' || op == '-' || op == '*' || op == '/');
-}
-
 char Application::checkMode(int argc, char** argv) {
   if (argc == 1) {
     error = "ERROR: You need to provide arguments.\n\n";
@@ -134,7 +108,7 @@ std::string Application::init(int argc, char** argv) {
     leftOperand = parseOperand(argv[1], argv[2]);
     operation = parseOperation(argv[3]);
     rightOperand = parseOperand(argv[4], argv[5]);
-  } catch (std::string e) {
+  } catch (std::string& e) {
     error = "ERROR: " + e;
     help(argv[0], error);
     return helpMessage;

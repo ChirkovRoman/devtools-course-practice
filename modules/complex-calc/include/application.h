@@ -21,18 +21,6 @@ class Application {
    */
   char checkMode(int argc, char** argv);
 
-  // setting arguments for  mode 2
-  void setOperands(char** argv);
-
-  void setLeftOperand(double, double);
-  Complex getLeftOperand();
-  void setRightOperand(double, double);
-  Complex getRightOperand();
-
-  char getOperation();
-  void setOperation(char);
-  static bool isOperation(char);
-
  private:
   Complex leftOperand;
   Complex rightOperand;
