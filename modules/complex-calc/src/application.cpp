@@ -26,8 +26,13 @@ char parseOperation(const char* arg) {
 }
 
 Complex parseOperand(const char* argReal, const char* argIm) {
-  double real = stod(std::string(argReal));
-  double im = stod(std::string(argIm));
+  double real, im;
+  try {
+    real = stod(std::string(argReal));
+    im = stod(std::string(argIm));
+  } catch (std::invalid_argument e) {
+    throw std::string("Wrong operand.");
+  }
 
   return Complex(real, im);
 }
