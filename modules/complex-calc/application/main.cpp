@@ -5,9 +5,11 @@
 
 #include <string>
 
-// #include "include/application.h"
+#include "include/application.h"
 
-int main(int argc, const char** argv) {
-  printf("hello");
+int main(int argc, char** argv) {
+  Application app;
+  std::string output = app.init(argc, argv);
+  printf("%s\n", output.c_str());
   return 0;
 }
