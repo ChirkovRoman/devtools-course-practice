@@ -9,7 +9,6 @@
 
 #include "include/complex_number.h"
 
-
 char parseOperation(const char* arg) {
   char op;
   if (strcmp(arg, "+") == 0) {
@@ -90,6 +89,8 @@ void Application::help(const char* appname, std::string message) {
       " 176.471 0.42 \\* 7 95.000034\n\n";
 }
 
+std::string Application::getError() { return error; }
+
 std::string Application::init(int argc, char** argv) {
   char mode = checkMode(argc, argv);
 
@@ -128,8 +129,13 @@ std::string Application::init(int argc, char** argv) {
       result = leftOperand * rightOperand;
       break;
     case '/':
-      result = leftOperand / rightOperand;
-      break;
+      try {
+        result = leftOperand / rightOperand;
+      } catch (int e) {
+        error = "ERROR: Can't divide by zero";
+        help(argv[0], error);
+        return helpMessage;
+      }
   }
 
   std::ostringstream stream;

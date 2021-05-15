@@ -20,6 +20,7 @@ class Application {
    *   2 for calculating an operation on two complex numbers
    */
   char checkMode(int argc, char** argv);
+  std::string getError();
 
  private:
   Complex leftOperand;
