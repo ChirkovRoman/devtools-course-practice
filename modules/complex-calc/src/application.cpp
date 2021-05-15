@@ -30,7 +30,7 @@ Complex parseOperand(const char* argReal, const char* argIm) {
   try {
     real = stod(std::string(argReal));
     im = stod(std::string(argIm));
-  } catch (std::invalid_argument e) {
+  } catch (std::invalid_argument& e) {
     throw std::string("Wrong operand.");
   }
 
