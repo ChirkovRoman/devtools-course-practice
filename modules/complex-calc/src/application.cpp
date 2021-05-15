@@ -32,15 +32,14 @@ Complex parseOperand(const char* argReal, const char* argIm) {
     im = stod(std::string(argIm));
   } catch (std::invalid_argument& e) {
     throw std::string("Wrong operand.");
+  } catch (std::out_of_range const& e) {
+    throw std::string("Part of operand is out of supported range.");
   }
 
   return Complex(real, im);
 }
 
-Application::Application() {
-  leftOperand = Complex();
-  rightOperand = Complex();
-}
+Application::Application() {}
 
 char Application::checkMode(int argc, const char** argv) {
   if (argc == 1) {
