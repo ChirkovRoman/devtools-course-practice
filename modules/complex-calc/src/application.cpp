@@ -25,7 +25,7 @@ char parseOperation(const char* arg) {
   return op;
 }
 
-Complex parseOperand(char* argReal, char* argIm) {
+Complex parseOperand(const char* argReal, const char* argIm) {
   double real = stod(std::string(argReal));
   double im = stod(std::string(argIm));
 
@@ -37,7 +37,7 @@ Application::Application() {
   rightOperand = Complex();
 }
 
-char Application::checkMode(int argc, char** argv) {
+char Application::checkMode(int argc, const char** argv) {
   if (argc == 1) {
     error = "ERROR: You need to provide arguments.\n\n";
     return 1;
@@ -91,7 +91,7 @@ void Application::help(const char* appname, std::string message) {
 
 std::string Application::getError() { return error; }
 
-std::string Application::init(int argc, char** argv) {
+std::string Application::operator()(int argc, const char** argv) {
   char mode = checkMode(argc, argv);
 
   // display errors and help
@@ -101,9 +101,6 @@ std::string Application::init(int argc, char** argv) {
   }
 
   // calculating an operation on two complex numbers
-  if (mode != 2) {
-    throw "Unsupported mode";
-  }
 
   // farther code is outside of "if" because function has to return something by
   // default put it in "if" if you adding new mode

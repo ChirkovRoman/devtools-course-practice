@@ -7,9 +7,9 @@
 
 #include "include/application.h"
 
-int main(int argc, char** argv) {
+int main(int argc, const char** argv) {
   Application app;
-  std::string output = app.init(argc, argv);
+  std::string output = app(argc, argv);
   printf("%s\n", output.c_str());
   return 0;
 }

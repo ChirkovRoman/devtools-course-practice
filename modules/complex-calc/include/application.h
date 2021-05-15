@@ -10,7 +10,7 @@
 class Application {
  public:
   Application();
-  std::string init(int argc, char** argv);
+  std::string operator()(int argc, const char** argv);
 
   void help(const char* appname, std::string message = "");
 
@@ -19,7 +19,7 @@ class Application {
    *   1 for help and displaying arguments errors,
    *   2 for calculating an operation on two complex numbers
    */
-  char checkMode(int argc, char** argv);
+  char checkMode(int argc, const char** argv);
   std::string getError();
 
  private:
