@@ -5,8 +5,10 @@
 #include <cstdio>
 #include <cstring>
 #include <sstream>
+#include <string>
 
 #include "include/complex_number.h"
+
 
 char parseOperation(const char* arg) {
   char op;
