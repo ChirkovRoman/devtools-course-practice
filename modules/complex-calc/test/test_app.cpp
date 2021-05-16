@@ -14,7 +14,7 @@ TEST(Complex_calc_application, can_create_just_app) {
 
 TEST(Complex_calc_application, can_get_help_without_throws_short_form) {
   Application app;
-  std::vector<const char*> argv = {"complex_calculator", "-h"};
+  std::vector<const char*> argv = {"complex-calc", "-h"};
   int argc = argv.size();
 
   ASSERT_NO_THROW(app(argc, &argv[0]));
@@ -22,7 +22,7 @@ TEST(Complex_calc_application, can_get_help_without_throws_short_form) {
 
 TEST(Complex_calc_application, can_get_help_without_throws_long_form) {
   Application app;
-  std::vector<const char*> argv = {"complex_calculator", "--help"};
+  std::vector<const char*> argv = {"complex-calc", "--help"};
   int argc = argv.size();
 
   ASSERT_NO_THROW(app(argc, &argv[0]));
@@ -30,8 +30,8 @@ TEST(Complex_calc_application, can_get_help_without_throws_long_form) {
 
 TEST(Complex_calc_application, can_add) {
   Application app;
-  std::vector<const char*> argv = {
-      "complex_calculator", "1.5", "2", "+", "3.02", "3"};
+  std::vector<const char*> argv = {"complex-calc", "1.5", "2", "+",
+                                   "3.02",         "3"};
   int argc = argv.size();
 
   std::string exp = "(4.52;5)";
@@ -42,8 +42,8 @@ TEST(Complex_calc_application, can_add) {
 
 TEST(Complex_calc_application, can_subtract) {
   Application app;
-  std::vector<const char*> argv = {
-      "complex_calculator", "1.5", "2", "-", "3.02", "3"};
+  std::vector<const char*> argv = {"complex-calc", "1.5", "2", "-",
+                                   "3.02",         "3"};
   int argc = argv.size();
   std::string exp = "(-1.52;-1)";
   std::string res = app(argc, &argv[0]);
@@ -53,8 +53,8 @@ TEST(Complex_calc_application, can_subtract) {
 
 TEST(Complex_calc_application, can_multiply) {
   Application app;
-  std::vector<const char*> argv = {
-      "complex_calculator", "1.5", "2", "*", "3.02", "3"};
+  std::vector<const char*> argv = {"complex-calc", "1.5", "2", "*",
+                                   "3.02",         "3"};
   int argc = argv.size();
 
   std::string exp = "(-1.47;10.54)";
@@ -65,8 +65,8 @@ TEST(Complex_calc_application, can_multiply) {
 
 TEST(Complex_calc_application, can_divide) {
   Application app;
-  std::vector<const char*> argv = {
-      "complex_calculator", "1.5", "2", "/", "3.02", "3"};
+  std::vector<const char*> argv = {"complex-calc", "1.5", "2", "/",
+                                   "3.02",         "3"};
   int argc = argv.size();
 
   std::string exp = "(0.581113;0.0849871)";
@@ -77,8 +77,7 @@ TEST(Complex_calc_application, can_divide) {
 
 TEST(Complex_calc_application, cannot_divide_by_zero) {
   Application app;
-  std::vector<const char*> argv = {
-      "complex_calculator", "1.5", "2", "/", "0", "0"};
+  std::vector<const char*> argv = {"complex-calc", "1.5", "2", "/", "0", "0"};
   int argc = argv.size();
 
   app(argc, &argv[0]);

@@ -30,7 +30,7 @@ Complex parseOperand(const char* argReal, const char* argIm) {
   try {
     real = stod(std::string(argReal));
     im = stod(std::string(argIm));
-  } catch (std::invalid_argument& e) {
+  } catch (std::invalid_argument const& e) {
     throw std::string("Wrong operand.");
   } catch (std::out_of_range const& e) {
     throw std::string("Part of operand is out of supported range.");
@@ -112,7 +112,7 @@ std::string Application::operator()(int argc, const char** argv) {
     leftOperand = parseOperand(argv[1], argv[2]);
     operation = parseOperation(argv[3]);
     rightOperand = parseOperand(argv[4], argv[5]);
-  } catch (std::string& e) {
+  } catch (std::string const& e) {
     error = "ERROR: " + e;
     help(argv[0], error);
     return helpMessage;
@@ -132,7 +132,7 @@ std::string Application::operator()(int argc, const char** argv) {
     case '/':
       try {
         result = leftOperand / rightOperand;
-      } catch (int e) {
+      } catch (int const& e) {
         error = "ERROR: Can't divide by zero";
         help(argv[0], error);
         return helpMessage;
